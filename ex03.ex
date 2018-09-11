@@ -65,10 +65,21 @@ defmodule Ex03 do
 #   Cannot call Integer.is_even in the helper, so call it in odd_even and return the result
 
   def odd_even([ ]),     do: [ ]
-  def odd_even([h|t]),   do: [check_even(Integer.is_even(h)) | odd_even(t)]
-  def check_even(true),  do: :even
-  def check_even(false), do: :odd
+  def odd_even([h|t]),   do: [check_even(h) | odd_even(t)]
 
+  @spec check_even(integer()) :: :even|:odd
+  def check_even(number) do
+    Integer.is_even(number)
+    |> convert_to_atom()
+  end
+
+  def convert_to_atom(true),  do: : even
+  def convert_to_atom(false), do: : odd
+
+#  Two transformations odd_even
+#  Have two Functions -> don't let a function rely on the input. Do NOT divide the functionality
+#  ->> Less Coupling, more Cohesion
+#  Think of transformation. If the explanation includes AND, then split it.
 
   ##############################################################################
   # 3.2:  5 points #

@@ -100,7 +100,6 @@ defmodule Ex04 do
   def even_odd(list),
     do: reduce(list, {[ ], [ ]}, &eo_helper/2)
 
-
   ###########################
   # IGNORE FROM HERE TO END #
   ###########################
